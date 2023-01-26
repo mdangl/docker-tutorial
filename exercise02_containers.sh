@@ -32,7 +32,7 @@ docker rm my-hello-world
 # Load the image "nginx" from the Docker registry
 docker pull nginx
 # Create and directly run a container named "nginx" from the image "nginx" ("--rm" will cause the container to be removed once it stops)
-docker run --rm -d --name -p 80:80 nginx nginx
+docker run --rm -d --name nginx -p 80:80 nginx
 # (at this point, it makes sense to check the port using the browser; nginx should respond)
 
 # Pause container "nginx"

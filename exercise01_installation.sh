@@ -23,7 +23,7 @@
 #usermod -a -G docker $USER
 
 ## Install Azure CLI --- usually not necessary / already done
-#curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
 # Run the container "hello-world" (actually: create and run a container based on the image "hello-world")
 docker run hello-world

@@ -4,8 +4,10 @@ dockerLogin="mdangl.azurecr.io"
 
 # Create image from Dockerfile (getting-started)
 git clone https://github.com/docker/getting-started.git
-cd getting-started/app
+cd getting-started
+docker build -t getting-started:ex04a .
 
+cd app
 echo '# syntax=docker/dockerfile:1' > Dockerfile
 echo 'FROM node:18-alpine' >> Dockerfile
 echo 'WORKDIR /app' >> Dockerfile
@@ -14,15 +16,15 @@ echo 'RUN yarn install --production' >> Dockerfile
 echo 'CMD ["node", "src/index.js"]' >> Dockerfile
 echo 'EXPOSE 3000' >> Dockerfile
 
-docker build -t getting-started-ex04a .
+docker build -t getting-started:ex04b .
 docker images
 
 # Modify Dockerfile
 sed -i 's/18-alpine/19-alpine/g' Dockerfile
-docker build -t getting-started-ex04b .
+docker build -t getting-started:ex04c .
 
 # Push image to Azure
-docker tag getting-started-ex04b "${dockerLogin}/getting-started-ex04b:v1"
+docker tag getting-started:ex04c "${dockerLogin}/getting-started:ex04c"
 az acr login --name $dockerLogin
 docker push "${dockerLogin}/getting-started-ex04b:v1 "
 docker images
@@ -46,7 +48,7 @@ spec:
     spec:
       containers:
       - name: getting-started
-        image: ${dockerLogin}/getting-started-ex04b:v1
+        image: ${dockerLogin}/getting-started:ex04b
         ports:
         - containerPort: 3000
           name: http-gs
