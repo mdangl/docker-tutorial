@@ -371,7 +371,7 @@ docker logs my-todo-cli-ex5a
 #### None
 Try the log driver 'none':
 ```
-docker run --name todo-cli-ex5b --log-driver 'none' todo-cli:v1
+docker run --name my-todo-cli-ex5b --log-driver 'none' todo-cli:v1
 docker inspect -f '{{.HostConfig.LogConfig.Type}}' my-todo-cli-ex5b
 docker logs my-todo-cli-ex5b
 ```
@@ -379,14 +379,14 @@ docker logs my-todo-cli-ex5b
 #### Local
 Try the log driver 'local':
 ```
-docker run --name todo-cli-ex5c --log-driver 'local' todo-cli:v1
+docker run --name my-todo-cli-ex5c --log-driver 'local' todo-cli:v1
 docker inspect -f '{{.HostConfig.LogConfig.Type}}' my-todo-cli-ex5c
 docker logs my-todo-cli-ex5c
 ```
 
 After inspecting and comparing the different outputs, clean up the containers:
 ```
-docker rm todo-cli-ex5a todo-cli-ex5b todo-cli-ex5c
+docker rm my-todo-cli-ex5a my-todo-cli-ex5b my-todo-cli-ex5c
 ```
 
 ### Docker Exec
