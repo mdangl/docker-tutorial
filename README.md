@@ -363,7 +363,7 @@ Depending on which log driver is configured for a container, logs may look diffe
 #### Json-File
 Try the default log driver: json-file
 ```
-docker run --name my-todo-cli-ex5a todo-cli
+docker run --name my-todo-cli-ex5a todo-cli:v1
 docker inspect -f '{{.HostConfig.LogConfig.Type}}' my-todo-cli-ex5a
 docker logs my-todo-cli-ex5a
 ```
@@ -371,7 +371,7 @@ docker logs my-todo-cli-ex5a
 #### None
 Try the log driver 'none':
 ```
-docker run --name todo-cli-ex5b --log-driver 'none' todo-cli
+docker run --name todo-cli-ex5b --log-driver 'none' todo-cli:v1
 docker inspect -f '{{.HostConfig.LogConfig.Type}}' my-todo-cli-ex5b
 docker logs my-todo-cli-ex5b
 ```
@@ -379,7 +379,7 @@ docker logs my-todo-cli-ex5b
 #### Local
 Try the log driver 'local':
 ```
-docker run --name todo-cli-ex5c --log-driver 'local' todo-cli
+docker run --name todo-cli-ex5c --log-driver 'local' todo-cli:v1
 docker inspect -f '{{.HostConfig.LogConfig.Type}}' my-todo-cli-ex5c
 docker logs my-todo-cli-ex5c
 ```
