@@ -1,0 +1,15 @@
+.gitignore
+README.md
+api.module.ts
+api/api.ts
+api/todoItems.service.ts
+configuration.ts
+encoder.ts
+git_push.sh
+index.ts
+model/additionalMessage.ts
+model/modelError.ts
+model/models.ts
+model/todoItem.ts
+param.ts
+variables.ts

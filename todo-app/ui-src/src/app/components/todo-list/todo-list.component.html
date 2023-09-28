@@ -1,0 +1,6 @@
+<div>
+    <h2>List of ToDos</h2>
+    <ul>
+      <li *ngFor="let todoItem of todoItems | async as list">{{ todoItem.title }}</li>
+    </ul>
+  </div>
