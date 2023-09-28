@@ -124,7 +124,9 @@ docker run -it --name my-todo-cli todo-cli:v1
 As you can see, the Docker command 'run' is basically a combination of the commands 'create' and 'start'.
 
 ### Prune Unused Containers
-We want to remove the container again, but while we are at it, we can also remove other stopped containers we no longer use, for example the one from the first exercise (if you didn't skip it):
+We want to remove the container again, but while we are at it, we can also remove other stopped containers we no longer use, for example the one from the first exercise (if you didn't skip it).
+
+**Only execute this, if you don't have any existing stopped containers you would like to keep**:
 ```
 docker container prune
 ```
