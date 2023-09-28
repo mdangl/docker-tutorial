@@ -340,9 +340,10 @@ Now, build the image:
 cd todo-app/ui-src
 docker build --tag=todo-ui:v4 .
 docker images
+cd ../..
 ```
 
-## Exercise 4: Troubleshooting
+## Exercise 5: Troubleshooting
 In this exercise, we will explore some options to gain insights into what is happening (or has happened) inside a container.
 
 ### Log Drivers
