@@ -477,19 +477,20 @@ Create a bind mount on the docker host to share it with the container:
 
 ```
 mkdir mountdir
+cp todo-app/api/data.mv.db mountdir/
 mountdir=`readlink -f mountdir/`
 ```
 
 Now, use the bind mount to run the API container:
 ```
-docker run --rm -d --name my-todo-api -p 9080:9080 --mount 'type=bind,source=${mountdir},target=target=/local-db' todo-api:v1
+docker run --rm -d --name my-todo-api -p 9080:9080 --mount "type=bind,source=${mountdir},target=/local-db" todo-api:v1
 ```
 
 Visit http://localhost and add some items. (Remember that you may need to wait a few seconds until the API is ready.) Stop and rerun the API container:
 
 ```
 docker stop my-todo-api
-docker run --rm -d --name my-todo-api -p 9080:9080 --mount 'type=bind,source=${mountdir},target=target=/local-db' todo-api:v1
+docker run --rm -d --name my-todo-api -p 9080:9080 --mount "type=bind,source=${mountdir},target=/local-db" todo-api:v1
 ```
 
 Again, wait a few seconds until the API is started up, then revisit http://localhost. The items you added are still there.
