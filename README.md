@@ -503,7 +503,7 @@ docker stop my-todo-api
 Another mount option is using `tmpfs`. However, this feature does not add persistence, it reduces it: contents of `tmpfs` are lost as soon as a container stops, even if you restart the same container again.
 
 ```
-docker run --rm -d --name my-todo-api -p 9080:9080 --mount 'type=tmpfs,target=target=/local-db' todo-api:v1
+docker run --rm -d --name my-todo-api -p 9080:9080 --mount 'type=tmpfs,target=/local-db' todo-api:v1
 ```
 
 Visit http://localhost and add some items. (Remember that you may need to wait a few seconds until the API is ready.) Stop and rerun the API container:
