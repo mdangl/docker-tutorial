@@ -455,11 +455,7 @@ docker volume create todo-app
 docker run --rm -d --name my-todo-api -p 9080:9080 --mount 'type=volume,source=todo-app,target=/local-db' todo-api:v1
 ```
 
-Visit http://localhost and add some items. (Remember that you may need to wait a few seconds until the API is ready.) Restart the container:
-
-```
-docker restart my-todo-api
-```
+Visit http://localhost and add some items. (Remember that you may need to wait a few seconds until the API is ready.)
 
 Now stop (and thereby remove, due to the `--rm` switch) and rerun the API container:
 
