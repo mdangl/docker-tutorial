@@ -355,23 +355,23 @@ Try the default log driver: json-file
 ```
 docker run --name my-todo-cli-ex5a todo-cli
 docker inspect -f '{{.HostConfig.LogConfig.Type}}' my-todo-cli-ex5a
-docker logs todo-cli-ex5a
+docker logs my-todo-cli-ex5a
 ```
 
 #### None
 Try the log driver 'none':
 ```
 docker run --name todo-cli-ex5b --log-driver 'none' todo-cli
-docker inspect -f '{{.HostConfig.LogConfig.Type}}' todo-cli-ex5b
-docker logs todo-cli-ex5b
+docker inspect -f '{{.HostConfig.LogConfig.Type}}' my-todo-cli-ex5b
+docker logs my-todo-cli-ex5b
 ```
 
 #### Local
 Try the log driver 'local':
 ```
 docker run --name todo-cli-ex5c --log-driver 'local' todo-cli
-docker inspect -f '{{.HostConfig.LogConfig.Type}}' todo-cli-ex5c
-docker logs todo-cli-ex5c
+docker inspect -f '{{.HostConfig.LogConfig.Type}}' my-todo-cli-ex5c
+docker logs my-todo-cli-ex5c
 ```
 
 After inspecting and comparing the different outputs, clean up the containers:
