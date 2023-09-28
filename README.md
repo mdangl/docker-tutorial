@@ -480,6 +480,7 @@ mkdir mountdir
 cp todo-app/api/data.mv.db mountdir/
 mountdir=`readlink -f mountdir/`
 ```
+Note that we initialize the mount dir with the database. This is because a bind mount will project the mounted directory over the target directory, whereas a volume would synchronize the target directory with the volume, as we saw in the previous exercise.
 
 Now, use the bind mount to run the API container:
 ```
