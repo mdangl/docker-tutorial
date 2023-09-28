@@ -562,8 +562,8 @@ Another network type is called `none`. It is used to prevent all communication.
 Instantiate the 'todo-api:v1' image to a container 'my-todo-api' and
 instantiate the 'todo-ui:v1' image to a container 'my-todo-ui', using the `none` network type for each of them:
 ```
-docker run --rm -d --name my-todo-api -p 9080:9080 --network 'bridge' todo-api:v1
-docker run --rm -d -p 80:80 --rm --name my-todo-ui --network 'bridge' todo-ui:v1
+docker run --rm -d --name my-todo-api -p 9080:9080 --network 'none' todo-api:v1
+docker run --rm -d -p 80:80 --rm --name my-todo-ui --network 'none' todo-ui:v1
 ```
 Visit http://localhost. Note that even though we provide a network mapping, the network type `none` prevents all communication, even from the host to the container.
 
