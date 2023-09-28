@@ -282,7 +282,7 @@ Now, using the editor of your choice, modify the file `todo-app/ui-v3/dist/asset
 ```
 Double check to verify that there are no comments ("/*", "*/") and the color is green, not red. Save the file.
 
-### Containerize a Prebuild Application
+### Containerize a Prebuilt Application
 Now, create a new file `todo-app/ui-v3/Dockerfile` and fill it with the following contents:
 ```
 # syntax=docker/dockerfile:1
@@ -302,6 +302,16 @@ cd todo-app/ui-v3
 docker build --tag=todo-ui:v3 .
 docker images
 cd ../..
+```
+
+Now create and run a container from the new image:
+```
+docker run --rm -d -p 80:80 --rm --name my-todo-ui todo-ui:v3
+```
+
+Check http://localhost to see that the button is green, then stop the container.
+```
+docker stop my-todo-ui
 ```
 
 ### Build and Containerize an Application
