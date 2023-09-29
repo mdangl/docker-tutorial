@@ -1,0 +1,55 @@
+version: "3"
+
+services:
+  api:
+    image: todo-api:v1
+    #ports:
+      #- "9080:9080"
+    healthcheck:
+        #the image must have the appropriate command installed, curl is not installed in this image
+        #test: curl http://localhost:9080/actuator/health
+        test: wget --spider http://localhost:9080/actuator/health
+        interval: 10s
+        timeout: 2s
+        retries: 10
+    restart: on-failure
+    networks:
+        - todo-app-network
+    volumes:
+      - todo-app-volume:/local-db
+  ui:
+    image: todo-ui:v1
+    restart: on-failure
+    depends_on:
+        api:
+            condition: service_healthy
+    #ports:
+      #- "80:80"
+    environment:
+        - TODO_API_URL=http://localhost/api/v1
+    networks:
+        - todo-app-network
+  proxy:
+    image: nginx:latest
+    restart: on-failure
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - api
+      - ui
+    ports:
+      - "80:80"
+    networks:
+        - todo-app-network
+
+#docker network create --driver bridge todo-network
+networks:
+  todo-app-network:
+    external: true
+
+#docker volume create todo-app-volume
+volumes:
+  todo-app-volume:
+    external: true
+
+
